@@ -1,0 +1,29 @@
+{
+  "name": "legoeditor",
+  "version": "0.1.0",
+  "authors": [
+    "Brijesh Bittu <brijeshb42@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "gridism": "~0.2.1",
+    "normalize.css": "~3.0.3",
+    "jquery": "~2.1.4",
+    "react": "~0.13.3",
+    "fetch": "~0.9.0"
+  },
+  "description": "Flask starter-kit",
+  "keywords": [
+    "legoeditor",
+    "starter",
+    "cms"
+  ],
+  "homepage": "http://github.com/brijeshb42/flask-starter-kit"
+}

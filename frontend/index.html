@@ -1,0 +1,27 @@
+{%- extends "layout.html" -%}
+
+{%- block content -%}
+<div class="unit whole ht-100 overflow-pane">
+    <h1>Editor</h1>
+    <div id="editor-content" class="editor-content"></div>
+</div>
+<!-- <div class="unit half ht-100 overflow-pane">
+    Preview
+</div> -->
+{%- endblock -%}
+
+{%- block script -%}
+
+<!-- Include vendor scripts here. -->
+<!-- build:js /static/js/vendor.js -->
+<script src="./bower_components/react/react-with-addons.js"></script>
+<script src="./bower_components/fetch/fetch.js"></script>
+<!-- endbuild -->
+<!-- build:js /static/js/script.gen.js -->
+<script src="./static/js/script.js"></script>
+<script src="./static/jsx/block.title.js"></script>
+<script src="./static/jsx/block.description.js"></script>
+<script src="./static/jsx/block.tags.js"></script>
+<script src="./static/jsx/components.js"></script>
+<!-- endbuild -->
+{%- endblock -%}

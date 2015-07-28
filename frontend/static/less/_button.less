@@ -1,0 +1,51 @@
+button, .btn, a.btn, input[type=submit] {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-bottom-width: 4px;
+    border-radius: 2px;
+    padding: 5px 10px;
+    transition: all 0.1s ease-in;
+
+    &:active {
+        border-color: #fff;
+    }
+
+    &:hover, &.active {
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+    &:focus {
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        outline: none;
+    }
+}
+
+.btn {
+    &.btn-mini {
+        font-size: 0.8em;
+        padding: 2px 4px;
+    }
+    &.btn-large {
+        padding: 10px 20px;
+        font-size: 1.1em;
+    }
+    &.btn-xlarge {
+        padding: 15px 25px;
+        font-size: 1.3em;
+    }
+}
+.btn-info {
+    .button-type-mixin(@info-color, @info-bg, @info-border);
+}
+
+.btn-success {
+    .button-type-mixin(@success-color, @success-bg, @success-border);
+}
+
+.btn-error {
+    .button-type-mixin(@error-color, @error-bg, @error-border);
+}
+
+.btn-warning {
+    .button-type-mixin(@warning-color, @warning-bg, @warning-border);
+}
