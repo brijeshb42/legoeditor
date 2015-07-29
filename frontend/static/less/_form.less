@@ -16,6 +16,8 @@
     textarea {
         box-sizing: border-box;
         border: 1px solid #ccc;
+        max-width: 100%;
+        padding: 5px 10px 5px 5px;
         width: 100%;
 
         &:focus {
@@ -66,16 +68,4 @@ input[type=search] {
             .box-type-mixin(lighten(@warning-color, 20%), #fff, lighten(@warning-border, 20%));
         }
     }
-}
-
-
-.tags {
-    border: 1px solid #08c;
-    display: inline-block;
-    margin: 0 2px;
-    padding: 2px 4px;
-}
-
-.block-item {
-    margin-bottom: 5px;
 }

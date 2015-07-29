@@ -118,4 +118,5 @@ bower_components/
 config.py
 templates/
 frontend/static/css/
+frontend/static/jsx/js/*.*
 *.db

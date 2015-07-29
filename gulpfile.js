@@ -26,12 +26,12 @@ var dest = {
     html: "./templates/",
     css: "./templates/static/css/",
     js: "./templates/static/js/",
-    jsx: "./frontend/static/jsx/",
+    jsx: "./frontend/static/jsx/js",
     img: "./templates/static/img/"
 };
 
 gulp.task("clean", function() {
-    del([dest.root, src.css, src.jsx+"*.js"], function (err, paths) {
+    del([dest.root, src.css, dest.jsx], function (err, paths) {
         console.log('Deleted files/folders:\n', paths.join('\n'));
     });
 });

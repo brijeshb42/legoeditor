@@ -49,11 +49,9 @@
 {%- with messages = get_flashed_messages(with_categories=true) -%}
   {%- if messages -%}
   <div class="grid">
-    <div class="unit whole flashes">
     {%- for category, message in messages -%}
-        <div class="message {{ category }}"><p>{{ message }}</p></div>
+        <div class="alert {{ category }}">{{ message }}</div>
     {%- endfor -%}
-    </div>
   </div>
   {%- endif -%}
 {%- endwith -%}
