@@ -29,10 +29,10 @@
     handleChange(event) {
       //console.log(event);
       if(event.target.innerHTML == '* ' || event.target.innerHTML == '*&nbsp;') {
-        this.props.convertTo(this.props.pos, 'ul');
+        this.props.convertTo(this.props.pos, APP.Blocks.UL);
         return;
       } else if(event.target.innerHTML == '1.') {
-        this.props.convertTo(this.props.pos, 'ol');
+        this.props.convertTo(this.props.pos, APP.Blocks.OL);
         return;
       }
       this.props.handleChange(this.props.pos, event.target.innerHTML);

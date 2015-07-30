@@ -44,6 +44,11 @@
     BACKSPACE: 8
   };
 
+  APP.Blocks = {};
+  APP.Blocks.UL = 'ul';
+  APP.Blocks.OL = 'ol';
+  APP.Blocks.DEFAULT = 'default';
+
   window.APP = APP;
 
 })(this);

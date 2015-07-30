@@ -13,12 +13,12 @@
       return initialState;
     },
 
-    componentDidMount() {
-      var self = this;
-      setInterval(function() {
-        console.log(self.state);
-      }, 2000);
-    },
+    // componentDidMount() {
+    //   var self = this;
+    //   setInterval(function() {
+    //     console.log(self.state);
+    //   }, 2000);
+    // },
 
     handleTitleChange(event) {
       if(event.type == 'keyup' && event.keyCode == 13) {
@@ -44,14 +44,14 @@
     addBlock() {
       if(this.state.blocks.length > 0) {
         var prevBlock = this.state.blocks[this.state.blocks.length-1];
-        if(prevBlock.type === 'ul') {
+        if(prevBlock.type === APP.Blocks.UL || prevBlock.type === APP.Blocks.OL) {
           if(prevBlock.items[prevBlock.items.length - 1] === '') {
             prevBlock.items.pop();
           }
         }
       }
       var newBlock = {
-        type: 'default',
+        type: APP.Blocks.DEFAULT,
         text: '',
         key: APP.uuid()
       };
@@ -149,7 +149,7 @@
     renderBlocks() {
       var self = this;
       var rndr = this.state.blocks.map(function(block, index) {
-        if(block.type === 'default') {
+        if(block.type === APP.Blocks.DEFAULT) {
           return (
             <APP.BlockDefault
               pos={index}
@@ -161,7 +161,7 @@
               convertTo={self.convertTo}
               handleChange={self.syncData} />
           );
-        } else if(block.type === 'ul'){
+        } else if(block.type === APP.Blocks.UL){
           return (
             <APP.UList
               pos={index}
@@ -173,7 +173,7 @@
               addItem={self.addListItem}
               handleChange={self.handleListChange} />
           );
-        } else if(block.type === 'ol'){
+        } else if(block.type === APP.Blocks.OL){
           return (
             <APP.OList
               pos={index}

@@ -11,6 +11,12 @@ var gulp        = require("gulp"),
     jshint      = require('gulp-jshint'),
     livereload  = require('gulp-livereload');
 
+function errorHandler (error) {
+    //console.log(error);
+    console.log(error.toString());
+    this.emit('end');
+}
+
 var src = {
     root: "./frontend/",
     html: "./frontend/**//*.html",
@@ -50,6 +56,7 @@ gulp.task("js", function() {
 
 gulp.task("jsx", function() {
     return gulp.src(src.jsx+"*.jsx")
+        .pipe(plumber())
         .pipe(react())
         .pipe(gulp.dest(dest.jsx));
 });
@@ -84,7 +91,7 @@ gulp.task("usemin", ["less", "jsx"], function() {
             css: [],
             html: [],
             js: ['concat']
-        }))
+        })).on('error', errorHandler)
         .pipe(gulp.dest(dest.html))
         .pipe(livereload());
 });
@@ -98,8 +105,8 @@ gulp.task("usemin-prod", ["less-prod", "copy-img", "jsx"], function() {
                 removeComments: true,
                 removeCommentsFromCDATA: true
             })],
-            js: [uglify({mangle: false}), rev()]
-        }))
+            js: [rev()]
+        })).on('error', errorHandler)
         .pipe(gulp.dest(dest.html));
 });
 

@@ -49,7 +49,9 @@
         this.props.addItem(this.props.pos);
       } else if(event.keyCode == APP.Keys.BACKSPACE && event.target.innerHTML === '') {
         event.preventDefault();
-        this.props.addBlock();
+        //console.log(event);
+        //console.log(this.props.pos);
+        this.props.addBlock(this.props.index);
       }
     },
 
@@ -69,6 +71,11 @@
   });
 
   var OList = React.createClass({
+
+    focus() {
+      var key = this.props.identifier+(this.props.items.length-1);
+      this.refs[key].focus();
+    },
 
     render() {
       //console.log(this.props.items);

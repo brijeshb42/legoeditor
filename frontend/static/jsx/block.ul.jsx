@@ -49,7 +49,9 @@
         this.props.addItem(this.props.pos);
       } else if(event.keyCode == APP.Keys.BACKSPACE && event.target.innerHTML === '') {
         event.preventDefault();
-        this.props.addBlock();
+        console.log(event);
+        //console.log(this.props.pos);
+        this.props.addBlock(this.props.index);
       }
     },
 
@@ -70,8 +72,22 @@
 
   var UList = React.createClass({
 
+    focus() {
+      var key = this.props.identifier+(this.props.items.length-1);
+      this.refs[key].focus();
+    },
+
+    addBlock(pos) {
+      //console.log(this.props.items[pos]);
+      if(pos === this.props.items.length-1) {
+        this.props.addBlock();
+      } else if(this.props.items[pos] === '') {
+        console.log(pos);
+        this.props.items.splice(pos, 1);
+      }
+    },
+
     render() {
-      //console.log(this.props.items);
       var self = this;
       return (
         <ul className="block-list">
@@ -79,13 +95,14 @@
             var key = self.props.identifier+index;
             return (
               <UListItem
+                ref={key}
                 index={index}
                 pos={self.props.pos}
                 key={key}
                 text={item}
                 handleChange={self.props.handleChange}
                 addItem={self.props.addItem}
-                addBlock={self.props.addBlock} />
+                addBlock={self.addBlock} />
             );
           })}
         </ul>
