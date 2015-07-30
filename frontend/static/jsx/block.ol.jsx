@@ -74,6 +74,7 @@
 
     focus() {
       var key = this.props.identifier+(this.props.items.length-1);
+      console.log(key);
       this.refs[key].focus();
     },
 

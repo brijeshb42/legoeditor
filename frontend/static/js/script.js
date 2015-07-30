@@ -48,6 +48,7 @@
   APP.Blocks.UL = 'ul';
   APP.Blocks.OL = 'ol';
   APP.Blocks.DEFAULT = 'default';
+  APP.Blocks.HR = 'hr';
 
   window.APP = APP;
 

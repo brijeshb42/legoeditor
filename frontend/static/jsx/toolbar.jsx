@@ -14,6 +14,10 @@
       this.setState({
         visible: !visible
       });
+      if (this.state.visible) {
+        //console.log('focus parent');
+        this.props.focusParent();
+      };
     },
 
     render() {
@@ -36,6 +40,7 @@
           <button>+</button>
           <button>I</button>
           <button>V</button>
+          <button>--</button>
         </div>
       );
     }

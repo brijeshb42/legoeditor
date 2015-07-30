@@ -14,7 +14,28 @@
     },
 
     focus() {
-      React.findDOMNode(this.refs.text).focus();
+      var node = React.findDOMNode(this.refs.text);
+      node.focus();
+      // var elemLen = node.innerHTML.length;
+      // //IE
+      // if(document.selection) {
+      //   console.log('doc sel');
+      //   node.focus();
+      //   var oSel = document.selection.createRange();
+      //   oSel.moveStart('character', -elemLen);
+      //   oSel.moveStart('character', elemLen);
+      //   oSel.moveEnd('character', 0);
+      //   oSel.select();
+      // } else if (node.selectionStart || node.selectionStart == '0') {
+      //   // Firefox/Chrome
+      //   console.log('doc sel chrome');
+      //   node.selectionStart = elemLen;
+      //   node.selectionEnd = elemLen;
+      //   elem.focus();
+      // } else {
+      //   console.log('no sel');
+      //   node.focus();
+      // }
     },
 
     showBlockBar() {
@@ -27,7 +48,6 @@
     },
 
     handleChange(event) {
-      //console.log(event);
       if(event.target.innerHTML == '* ' || event.target.innerHTML == '*&nbsp;') {
         this.props.convertTo(this.props.pos, APP.Blocks.UL);
         return;
@@ -53,14 +73,12 @@
       if(event.keyCode == APP.Keys.ENTER && event.target.innerHTML != '') {
         this.props.addBlock();
       } else if(event.target.innerHTML.length > 0) {
-        //console.log('text and bar');
         if(this.state.showBlockBar) {
           this.setState({
             showBlockBar: false
           });
         }
       } else if(event.target.innerHTML == '' && this.state.showBlockBar == false) {
-        //console.log(event);
         this.setState({
           showBlockBar: true
         });
@@ -80,9 +98,12 @@
     },
 
     render() {
+      var self = this;
       var toolbar;
       if(this.state.showBlockBar) {
-        toolbar = <APP.Toolbar showBlockBar={this.showBlockBar} />;
+        toolbar = <APP.Toolbar
+                    showBlockBar={this.showBlockBar}
+                    focusParent={this.focus} />;
       }
       return (
         <div

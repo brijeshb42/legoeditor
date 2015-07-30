@@ -13,12 +13,12 @@
       return initialState;
     },
 
-    // componentDidMount() {
-    //   var self = this;
-    //   setInterval(function() {
-    //     console.log(self.state);
-    //   }, 2000);
-    // },
+    componentDidMount() {
+      var self = this;
+      setInterval(function() {
+        console.log(self.state);
+      }, 2000);
+    },
 
     handleTitleChange(event) {
       if(event.type == 'keyup' && event.keyCode == 13) {
@@ -27,7 +27,7 @@
         return;
       }
       this.setState({
-        title: event.target.value
+        title: event.target.innerHTML
       });
     },
 
@@ -184,6 +184,10 @@
               addBlock={self.addBlock}
               addItem={self.addListItem}
               handleChange={self.handleListChange} />
+          );
+        } else if(block.type === APP.Blocks.HR){
+          return (
+            <APP.HorizontalRule />
           );
         } else {
           return '';
